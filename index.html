@@ -29,15 +29,17 @@
 
 
         <div class="about" id="about">
-            <h2>О нас</h2>
-            <p class="aboutText">
-                В <strong>CoolCoalIncCorporated</strong> мы превращаем историю угля в увлекательное приключение! 
-            Наша миссия — познакомить подрастающее поколение с удивительным миром угледобычи 
-            через интерактивные игры, эксперименты и живые рассказы.
-            </p>
-            <p class="aboutItem">⛏️ Погружаем в историю угольного ремесла</p>
-            <p class="aboutItem">🔍 Изучаем и показываем угольную науку</p>
-            <p class="aboutItem">✨ Пробуждаем интерес к геологии и природным ресурсам</p>
+            <div>
+                <h2>О нас</h2>
+                <p class="aboutText">
+                    В <strong>CoolCoalIncCorporated</strong> мы превращаем историю угля в увлекательное приключение! 
+                Наша миссия — познакомить подрастающее поколение с удивительным миром угледобычи 
+                через интерактивные игры, эксперименты и живые рассказы.
+                </p>
+                <p class="aboutItem">⛏️ Погружаем в историю угольного ремесла</p>
+                <p class="aboutItem">🔍 Изучаем и показываем угольную науку</p>
+                <p class="aboutItem">✨ Пробуждаем интерес к геологии и природным ресурсам</p>
+            </div>
         </div>
 
 
@@ -79,30 +81,32 @@
         <div class="form" id="form">
             <h2>Оставьте заявку</h2>
             <div class="formContainer">
-                <input type="text" class="formInput" placeholder="Ваше имя">
-                <input type="text" class="formInput" placeholder="Город проживания">
-                <input type="email" class="formInput" placeholder="E-mail адрес">
-                <input type="number" class="formInput" placeholder="Телефон">
+                <input type="text" class="formInput inputName" placeholder="Ваше имя">
+                <input type="text" class="formInput inputCity" placeholder="Город проживания">
+                <input type="email" class="formInput inputEmail" placeholder="E-mail адрес">
+                <input type="number" class="formInput inputPhone" placeholder="Телефон">
             </div>
         </div>
         <div class="formBtn">Отправить</div>
         <div class="formConfirm">
-            <p>Заявка успешно отправленна!</p>
+            <p class="formConfirmText">Заявка успешно отправленна!</p>
         </div>
+        
 
         <div class="chatBot" id="chatBot">
-            <div class="chatHead">
-                <img src="assets/img/bot.png" alt="" height="50">
-                <p>Персональный помощник Роман</p>
-            </div>
             <div class="chat">
                 <p class='botMessage'>Привет, я персональный чат бот и готов ответить на ваши вопросы!</p>
             </div>
             <div class="send">
-                <input type="text" class="textbox">
-                <img class="clickMe" src="assets/img/Comm.png" alt="" height="45">
+                <div class="sendContainer">
+                    <input type="text" class="textbox">
+                    <img class="clickMe" src="assets/img/Comm.png" alt="" height="35">
+                </div>
+                
             </div>
-            <div class="choose"></div>
+            <div class="choose">
+                <p class='chooseMe'>Что из себя представляет процесс добычи угля?</p>
+            </div>
         </div>
 
     </main>

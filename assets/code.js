@@ -13,7 +13,7 @@ let quest =
     'доб подзем способ', 
     'способ доб уг', 
     'как исп откр', 
-    'как исп закр', 
+    'как исп подз', 
     'что угл извлеч', 
     'как уг очищ', 
     'как транс'
@@ -31,14 +31,15 @@ let fullQuest =
     'Какими основными способами добывают уголь?', 
     'Как ведется добыча открытым способом?', 
     'Как ведется добыча подземным способом?', 
-    'Какая техника используется для добычи открытым способом?',
-    'Какая техника используется для добычи подземным способом?',
+    'Какая техника используется для открытого способа?',
+    'Какая техника используется для подземного способа?',
 
     'Что происходит с углем после его извлечения из недр?',
     'Как уголь очищают и обогащают?', 
     'Как уголь транспортируют к потребителю?'
 ]
 btn.addEventListener('click', SendText);
+
 
 function SendText(){
     if(textbox.value != ""){
@@ -84,7 +85,7 @@ function SendText(){
                 break; 
             case 5:
                 textToAnswer = "Открытый способ применяется, если уголь залегает неглубоко. Сначала снимают слои пустой породы (вскрышу), а затем мощными экскаваторами добывают уголь";
-                next = 7;
+                next = 8;
                 break; 
             case 6:
                 textToAnswer = "Подземный способ используется для глубокозалегающих пластов. Строятся шахты — сложные подземные сооружения с системой тоннелей (выработок), по которым люди и техника добираются до угольного пласта";
@@ -96,7 +97,7 @@ function SendText(){
                 break;
             case 8:
                 textToAnswer = "Для вскрыши и добычи используются одноковшовые и роторные экскаваторы, шагающие экскаваторы, бульдозеры, а для транспортировки — огромные самосвалы (БелАЗы) и конвейеры";
-                next = 8;
+                next = 7;
                 break;
             case 9:
                 textToAnswer = "Используются проходческие комбайны для создания выработок, очистные комбайны для выемки угля в лаве, механизированные крепи для поддержки кровли, а также конвейеры и вагонетки для транспортировки";
@@ -122,20 +123,19 @@ function SendText(){
     
         chat.innerHTML += "<p class='botMessage'>" + textToAnswer + "</p>";
         textbox.value = "";
+        document.querySelector('.choose').innerHTML = '';
 
         document.querySelector('.choose').innerHTML += "<p class='chooseMe'> "+ fullQuest[next] +"</p>"
-        document.querySelector('.choose').innerHTML += "<p class='chooseMe1'> "+ fullQuest[Math.floor(Math.random() * 13)] +"</p>"
-        
-        document.querySelector('.chooseMe').addEventListener('click',function(){
-            textbox.value = document.querySelector('.chooseMe').textContent;
-            document.querySelector('.choose').innerHTML = '';
-            SendText();
-        })
-        document.querySelector('.chooseMe1').addEventListener('click',function(){
-            textbox.value = document.querySelector('.chooseMe1').textContent;
-            document.querySelector('.choose').innerHTML = '';
-            SendText();
-        })
+        let randomQuest = Math.floor(Math.random() * 13);
+        if(randomQuest == next){
+            if(next < 12){
+                randomQuest++
+            }else{
+                randomQuest = 0
+            }
+        }
+        document.querySelector('.choose').innerHTML += "<p class='chooseMe'> "+ fullQuest[randomQuest] +"</p>"
+        updateChoose();
 
         chat.scrollTo({
             top: chat.scrollHeight,
@@ -174,6 +174,29 @@ function WhatAnswer(){
 
 
 jQuery(document).ready(function($){
+    window.updateChoose = function(){
+        $(".chooseMe").click(function(){
+                $('.textbox').val($(this).text());
+                SendText()
+            }),
+        $('.chooseMe').hover(function(){
+            anime({
+                targets: this,
+                translateX: 5,
+                duration: 1000,
+            });
+        },function(){
+            anime({
+                targets: this,
+                translateX: 0,
+                duration: 1000,
+            });
+        });
+    }
+    
+    updateChoose();
+
+
     $('.masterclassItem').hover(function(){
         anime({
             targets: this,
@@ -189,21 +212,67 @@ jQuery(document).ready(function($){
     });
 
     $(".formBtn").click(function(){
-        $(".formInput").val(''),
+        let err = false;
+        if($(".inputName").val() == ""){
+            $(".inputName").css({
+                "border": "2px solid red",
+                "background-color": "#ffa3a3ff",
+            })
+            err = true;
+        }
+
+        if($(".inputCity").val() == ""){
+            $(".inputCity").css({
+                "border": "2px solid red",
+                "background-color": "#ffa3a3ff",
+            })
+            err = true;
+        }
+
+        if($(".inputEmail").val() == ""){
+            $(".inputEmail").css({
+                "border": "2px solid red",
+                "background-color": "#ffa3a3ff",
+            })
+            err = true;
+        }
+
+        if($(".inputPhone").val() == ""){
+            $(".inputPhone").css({
+                "border": "2px solid red",
+                "background-color": "#ffa3a3ff",
+            })
+            err = true;
+        }
+
+        if(err){
+            $(".formConfirmText").text("Ошибка в форме!")  
+        }else{
+            $(".formConfirmText").text("Заявка успешно отправленна!") 
+            $(".formInput").val('')
+        }
+
         anime({
             targets: '.formConfirm',
-            translateY: [0,120],
+            translateY: [0,80],
             duration: 2000,
             complete: function() {
                 anime({
                 targets: '.formConfirm',
-                translateY: [120,0],
+                translateY: [80,0],
                 duration: 2000,
                 delay: 500,
             })
             }
         });
     });
+
+    $(".formInput").on('input', function(){
+        $(this).css({
+                "border": "2px solid gray",
+                "background-color": "#fff",
+            })
+    })
 
     $(".textbox").keyup(function(event) {
         if (event.keyCode === 13) {

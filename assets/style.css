@@ -60,7 +60,7 @@ h2 {
     justify-items: center;
     align-items: center;
     padding: 0 60px;
-    background-image: url('img/back1.png');
+    background-image: url('img/Back.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width: 70%;
@@ -78,10 +78,11 @@ h2 {
 
 
 .about{
+    display: flex;
     justify-self: center;
-    padding: 30px 200px 30px 40px;
+    padding: 30px 40px 30px 40px;
     width: 70%;
-    margin: 100px 100px;
+    margin: 100px 0px;
     background: linear-gradient(135deg, #d5dde3 0%, #87CEEB 50%, #4682B4 100%);
     border-radius: 15px;
     font-size: 30px;
@@ -100,6 +101,15 @@ h2 {
 .aboutItem{
     margin-top: 15px;
     font-weight: 600;
+}
+
+.aboutImgContainer{
+    z-index: 1;
+}
+
+.aboutImg{
+    justify-content: end;
+    width: 100%;
 }
 
 
@@ -219,7 +229,7 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 450px;
     height: 50px;
     font-size: 30px;
-    background-color: rgb(212, 212, 212);
+    background-color: rgba(210, 210, 210, 0.8);
     border-radius: 15px;
 
     -webkit-user-select: none;
@@ -236,53 +246,53 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 100px 100px;
     background: #F8FDFF;
     border-radius: 15px;
-    font-size: 30px;
+    font-size: 20px;
     font-family: "Nunito Sans", sans-serif; 
-    border: #4682B4 solid 10px;
-}
-
-.chatHead{
-    font-size: 40px;
-    font-weight: 700;
-    width: 100%;
-    background-color: #4682B4;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    gap: 20px;
 }
 
 .chat{
     height: 500px;
     overflow-y: auto;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .send{
-    height: 40px;
+    margin-top: 5px;
+    width: 100%;
+    height: 60px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-color: #65bbf4;
+}
+.sendContainer{
+    margin: 10px 0px;
+    display: flex;
+    width: 95%;
+    border-radius: 45px;
+    align-items: center;
+    background-color: white;
 }
 
 .textbox{
+    margin-left: 10px;
     font-family: "Roboto Slab", serif;
     width: 100%;
     height: 45px;
-    background-color: #ADE8F4;
     border: none;
     outline:none;
-    font-size: 30px;
+    font-size: 20px;
+    border-radius: 45px;
 }
 
 .clickMe{
-    background-color: #ADE8F4;
+    margin-right: 10px;
     cursor: pointer;
 }
 
 .botMessage{
     font-family: "Roboto Slab", serif;
-    background-color: #CAF0F8;
+    background-color: #65bbf4;
     border-radius: 0px 15px 15px 15px;
     padding: 5px;
     margin: 10px 20px;
@@ -292,7 +302,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .personMessage{
     font-family: "Roboto Slab", serif;
-    background-color: #CAF0F8;
+    background-color: #65bbf4;
     max-width: 700px;
     color: #000;
     justify-self: end;
@@ -305,14 +315,13 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     height: auto;
     font-family: "Roboto Slab", serif;
-    background-color: #ADE8F4;
-    font-size: 30px;
+    background-color: #65bbf4;
+    font-size: 25px;
     padding: 15px 5px;
+    border-radius: 0px 0px 15px 15px;
 }
 
-.chooseMe, .chooseMe1{
-    margin: 10px 0px;
-
+.chooseMe{
     -webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
